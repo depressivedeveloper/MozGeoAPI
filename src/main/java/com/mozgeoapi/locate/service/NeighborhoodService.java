@@ -1,8 +1,6 @@
 package com.mozgeoapi.locate.service;
 
-import com.mozgeoapi.locate.model.District;
 import com.mozgeoapi.locate.model.Neighborhood;
-import com.mozgeoapi.locate.repository.DistrictRepository;
 import com.mozgeoapi.locate.repository.NeighborhoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,8 +10,11 @@ public class NeighborhoodService {
     @Autowired
     private NeighborhoodRepository repository;
 
-    public Neighborhood saveNeighborhood(Neighborhood neighborhood){
-        return repository.save(neighborhood);
+    @Autowired
+    private LocalityService localityService;
+
+    public Neighborhood saveNeighborhood(Neighborhood neighborhood, String localityUuid){
+        return localityService.addNeighborhood(neighborhood, localityUuid);
     }
 
     public Neighborhood getNeighborhoodById(Long id){

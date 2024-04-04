@@ -52,3 +52,23 @@ fornecidos pelo público. Estou buscando a lista de todas as localidades de Moç
 ## Bairros
 São tantos bairros que deve-se optar pelo pior caso, deixar o público registar os bairros.
 Talvez seja necessária uma interface básica para o efeito.# MozGeoAPI
+
+
+# Rotas e seus Recursos
+
+Tenha em conta que as rotas aqui apresentadas devem ser precedidas pelo (DOMINIO.TLD)
+
+Ainda nao temos um dominio proprio e servidor para o efeito
+
+## .../api/country/{countryName}
+* Retorna um objecto JSON dos dados da divisao administrativa do país especificado.
+em princípio teremos um único país na base de dados e nao estará aberta
+a rota para adição de novos.
+
+## .../api/province/getAll
+* Retorna um array de províncias
+
+## .../
+
+# Se eu tenho um distrito e quero saber a que provincia pertence, como fazer? e se for um bairro, localidade?
+

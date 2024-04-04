@@ -18,7 +18,7 @@ public class District {
     private String uuid;
     @Column(nullable = false, unique = true)
     private String name;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "district_id")
     private List<Locality> localityList;
 

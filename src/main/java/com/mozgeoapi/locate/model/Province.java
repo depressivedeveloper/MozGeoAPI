@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity(name = "province")
+@Table
 public class Province {
     @jakarta.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +24,7 @@ public class Province {
     private String capital;
     private Long latitude;
     private Long longitude;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "province_id")
     private List<District> districtList;
 
@@ -94,6 +95,14 @@ public class Province {
         this.longitude = longitude;
     }
 
+    public void setDistrictList(List<District> districtList) {
+        this.districtList = districtList;
+    }
+
+    public List<District> getDistrictList() {
+        return districtList;
+    }
+
     @Override
     public String toString() {
         return "Province{" +
@@ -101,8 +110,11 @@ public class Province {
                 ", uuid='" + uuid + '\'' +
                 ", name='" + name + '\'' +
                 ", capital='" + capital + '\'' +
-                ", latitude='" + latitude + '\'' +
-                ", longitude='" + longitude + '\'' +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                ", districtList=" + districtList +
                 '}';
     }
 }
+
+

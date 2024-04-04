@@ -18,7 +18,7 @@ public class Country {
     private String uuid;
     @Column(nullable = false, unique = true)
     private String name;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "country_id")
     private List<Province> provinceList;
 
@@ -60,7 +60,8 @@ public class Country {
     }
 
     public void setProvinceList(List<Province> provinceList) {
-        this.provinceList = provinceList;
+        if( this.getProvinceList()==null)this.provinceList = provinceList;
+        else this.getProvinceList().addAll(provinceList);
     }
 
     @Override
